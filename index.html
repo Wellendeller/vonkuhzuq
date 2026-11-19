@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="von Kuh zu Q – CAD-Konstruktion und 3D-Druck. Von der ersten Idee zum fertigen Bauteil.">
+  <meta name="theme-color" content="#142536">
+  <title>von Kuh zu Q | CAD & 3D-Druck</title>
+
+  <style>
+    :root {
+      --navy: #142536;
+      --blue: #203d55;
+      --orange: #f28b38;
+      --light: #f4f6f8;
+      --text: #263746;
+      --muted: #687887;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: var(--orange); }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+      color: #e0e8ef;
+    }
+
+    nav a:hover { color: var(--orange); }
+
+    .hero {
+      background: linear-gradient(120deg, #142536, #294d68);
+      color: white;
+      padding: 105px 0 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: #ffad66;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 70px);
+      line-height: 1.08;
+      margin: 20px 0;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 19px;
+      color: #d6e0e8;
+      max-width: 590px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--orange);
+      color: #172a39;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 25px;
+      border-radius: 5px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .button:hover { background: #ffad66; }
+
+    .hero::after {
+      content: "Q";
+      position: absolute;
+      right: 8%;
+      top: 2%;
+      font-size: 360px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.035);
+      line-height: 1;
+    }
+
+    section { padding: 85px 0; }
+
+    .section-title {
+      font-size: 36px;
+      color: var(--navy);
+      margin: 0 0 12px;
+      letter-spacing: -1px;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 38px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .service {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 8px;
+      border-bottom: 3px solid var(--orange);
+    }
+
+    .service .symbol {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .service h3 {
+      color: var(--navy);
+      margin: 5px 0 10px;
+      font-size: 21px;
+    }
+
+    .service p { color: var(--muted); margin: 0; }
+
+    .materials {
+      background: var(--navy);
+      color: white;
+    }
+
+    .materials .section-title { color: white; }
+
+    .materials .intro { color: #c6d3de; }
+
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .material {
+      border: 1px solid #597185;
+      border-radius: 5px;
+      padding: 11px 20px;
+      font-weight: bold;
+    }
+
+    .material.highlight {
+      background: var(--orange);
+      color: var(--navy);
+      border-color: var(--orange);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .step {
+      border-left: 3px solid var(--orange);
+      padding-left: 20px;
+    }
+
+    .step-number {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--orange);
+      letter-spacing: 2px;
+    }
+
+    .step h3 { color: var(--navy); }
+
+    .contact {
+      background: var(--light);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--navy);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+    }
+
+    .contact-info p { color: #d0dce5; }
+
+    .contact-info a { color: #ffad66; }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 17px 0 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d6dde3;
+      border-radius: 5px;
+      font: inherit;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid var(--orange);
+      border-color: transparent;
+    }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      font-weight: normal;
+      color: var(--muted);
+    }
+
+    .consent input {
+      width: auto;
+      margin-top: 5px;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      background: #0d1b28;
+      color: #c4d0da;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer a { color: #ffad66; }
+
+    @media(max-width: 700px) {
+      nav { flex-direction: column; }
+      nav a { margin: 0 8px; }
+      .hero { padding: 75px 0; }
+      .services, .process, .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      section { padding: 60px 0; }
+      .contact-layout { gap: 25px; }
+      form { padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">von Kuh zu <span>Q.</span></div>
+      <div>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#materialien">Materialien</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div class="container hero-content">
+      <div class="eyebrow">CAD-Konstruktion & 3D-Druck</div>
+      <h1>Von der Idee<br>zum <span>Bauteil.</span></h1>
+      <p>
+        Kreative Ideen verdienen durchdachte Lösungen.
+        Von der digitalen Konstruktion bis zum
+        physischen Bauteil – präzise, individuell und
+        lösungsorientiert.
+      </p>
+      <a class="button" href="#kontakt">Projekt anfragen →</a>
+    </div>
+  </div>
+
+  <section id="leistungen">
+    <div class="container">
+      <h2 class="section-title">Was ich anbiete</h2>
+      <p class="intro">
+        Von der ersten Idee bis zum fertigen Objekt:
+        Ich unterstütze bei der Entwicklung und
+        Umsetzung individueller Bauteile und Lösungen.
+      </p>
+
+      <div class="services">
+
+        <div class="service">
+          <div class="symbol">⌘</div>
+          <h3>CAD-Konstruktion</h3>
+          <p>
+            Entwicklung und Konstruktion individueller
+            3D-Modelle. Von einfachen Geometrien bis
+            zu komplexen technischen Bauteilen.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="symbol">▧</div>
+          <h3>3D-Druck</h3>
+          <p>
+            Umsetzung digitaler Konstruktionen in
+            reale Bauteile. Individuelle Fertigung
+            für Prototypen, Ersatzteile und Projekte.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="symbol">⚙</div>
+          <h3>Individuelle Lösungen</h3>
+          <p>
+            Unterstützung bei technischen
+            Herausforderungen und der Entwicklung
+            massgeschneiderter Komponenten.
+          </p>
+        </div>
+
+        <div class="service">
+          <div class="symbol">◇</div>
+          <h3>Vom Konzept zum Prototyp</h3>
+          <p>
+            Ideen greifbar machen: Konstruktion,
+            Anpassung und Herstellung erster
+            Prototypen.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="materials" id="materialien">
+    <div class="container">
+      <h2 class="section-title">Das richtige Material.</h2>
+      <p class="intro">
+        Je nach Anforderung kommen unterschiedliche
+        3D-Druckmaterialien zum Einsatz – von
+        unkomplizierten Anwendungen bis zu
+        anspruchsvollen technischen Bauteilen.
+      </p>
+
+      <div class="material-list">
+        <div class="material highlight">PLA</div>
+        <div class="material">PETG</div>
+        <div class="material">ABS</div>
+        <div class="material">ASA</div>
+        <div class="material highlight">PC (Polycarbonat)</div>
+      </div>
+      <p class="small-note" style="color:#c6d3de; margin-top:20px">
+        Weitere Materialien und Anforderungen auf Anfrage.
+        Materialverfügbarkeit und Eignung werden
+        projektspezifisch geprüft.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">So funktioniert's</h2>
+      <p class="intro">
+        Eine unkomplizierte Zusammenarbeit in drei Schritten.
+      </p>
+
+      <div class="process">
+        <div class="step">
+          <div class="step-number">01 / ANFRAGE</div>
+          <h3>Idee beschreiben</h3>
+          <p>
+            Teile deine Idee, deine Anforderungen
+            oder deine technische Herausforderung.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02 / KONSTRUKTION</div>
+          <h3>Lösung entwickeln</h3>
+          <p>
+            Gemeinsam werden Anforderungen geklärt
+            und eine passende Lösung erarbeitet.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03 / UMSETZUNG</div>
+          <h3>Realität schaffen</h3>
+          <p>
+            Aus dem digitalen Modell entsteht ein
+            greifbares Bauteil.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="container">
+      <h2 class="section-title">Lass uns deine Idee umsetzen.</h2>
+      <p class="intro">
+        Du hast eine Frage, eine konkrete Projektidee
+        oder benötigst Unterstützung bei einer
+        technischen Herausforderung?
+        Ich freue mich auf deine Nachricht.
+      </p>
+
+      <div class="contact-layout">
+
+        <div class="contact-info">
+          <h3>Kontakt</h3>
+          <p>
+            Beschreibe dein Vorhaben möglichst genau.
+            Ich melde mich anschliessend bei dir.
+          </p>
+          <p><strong>von Kuh zu Q</strong></p>
+          <p>
+            <a href="mailto:raphael.grueter@gmail.com">
+              raphael.grueter@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <form
+          action="https://formsubmit.co/raphael.grueter@gmail.com"
+          method="POST">
+
+          <input type="hidden" name="_subject"
+                 value="Neue Projektanfrage – von Kuh zu Q">
+
+          <input type="hidden" name="_template" value="table">
+
+          <!-- Spam-Schutz: Honeypot -->
+          <div style="display:none">
+            <label>Nicht ausfüllen</label>
+            <input type="text" name="_honey" tabindex="-1">
+          </div>
+
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name"
+                 placeholder="Vor- und Nachname" required>
+
+          <label for="email">E-Mail-Adresse *</label>
+          <input type="email" id="email" name="email"
+                 placeholder="name@beispiel.ch" required>
+
+          <label for="topic">Worum geht es?</label>
+          <select id="topic" name="Thema">
+            <option value="CAD-Konstruktion">CAD-Konstruktion</option>
+            <option value="3D-Druck">3D-Druck</option>
+            <option value="Prototyping">Prototyping</option>
+            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+          </select>
+
+          <label for="message">Deine Nachricht *</label>
+          <textarea id="message" name="Nachricht"
+                    placeholder="Beschreibe dein Projekt oder deine Frage..."
+                    required></textarea>
+
+          <label class="consent">
+            <input type="checkbox" name="Datenschutzhinweis"
+                   value="Akzeptiert" required>
+            <span>
+              Ich habe die Datenschutzhinweise gelesen und
+              bin mit der Verarbeitung meiner Angaben zur
+              Bearbeitung dieser Anfrage einverstanden.
+            </span>
+          </label>
+
+          <button class="button submit-button" type="submit">
+            Anfrage senden →
+          </button>
+
+          <p class="small-note">
+            * Pflichtfelder. Bitte keine vertraulichen
+            Informationen oder sensiblen Daten übermitteln.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>von Kuh zu Q.</strong> | CAD-Konstruktion & 3D-Druck</p>
+    <p>© <span id="year"></span> von Kuh zu Q. Alle Rechte vorbehalten.</p>
+    <p>
+      <a href="mailto:raphael.grueter@gmail.com">Kontakt</a>
+      &nbsp;|&nbsp;
+      <a href="#datenschutz">Datenschutz</a>
+    </p>
+    <p id="datenschutz">
+      Deine Angaben werden zur Bearbeitung deiner Anfrage
+      verarbeitet und über einen externen Formulardienst
+      per E-Mail weitergeleitet. Bitte vor Veröffentlichung
+      um vollständige Datenschutzhinweise ergänzen.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
